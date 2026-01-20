@@ -1,71 +1,197 @@
-# Advanced Black–Scholes Options P/L Dashboard
+# 🚀 Advanced Black-Scholes Options P/L Dashboard
 
-An interactive Streamlit app for visualizing Black–Scholes option prices, P/L heatmaps, Greeks, and basic risk metrics using Plotly. [page:1]
+An interactive web application for analyzing options trading strategies using the Black-Scholes model. This dashboard provides comprehensive profit/loss analysis, Greeks calculations, risk metrics, and scenario testing for call and put options.
 
-## Features
+## ✨ Features
 
-- **P/L** heatmap for call and put options across stock price and time-to-expiry ranges. [page:1]
-- Point analysis showing option price, P/L, and percentage return at a specific stock price and days-to-expiry. [page:1]
-- Greeks dashboard (Delta, Gamma, Theta, Vega, Rho) with both point metrics and heatmaps over price and time. [page:1]
-- Risk metrics tab with a simple Value at Risk (VaR) estimate and Monte Carlo–based probability of achieving a target return. [page:1]
-- Scenario analysis for predefined market regimes (Bull, Bear, High Vol, Low Vol, Market Crash) with P/L and return visualization. [page:1]
+### 📈 P/L Heatmap
+- Interactive 2D heatmap showing profit/loss across different stock prices and time periods
+- Break-even point visualization
+- Percentage return calculations
+- Real-time point analysis with customizable parameters
 
+### 🔍 Greeks Analysis
+- Real-time calculation of all major Greeks:
+  - **Delta (Δ)**: Price sensitivity to underlying stock movement
+  - **Gamma (Γ)**: Rate of change of Delta
+  - **Theta (Θ)**: Time decay per day
+  - **Vega (ν)**: Sensitivity to volatility changes
+  - **Rho (ρ)**: Sensitivity to interest rate changes
+- Interactive heatmaps for each Greek across different market conditions
 
-Install dependencies:
+### 💰 Risk Metrics
+- **Value at Risk (VaR)**: Calculate potential losses at various confidence levels
+- **Probability Analysis**: Monte Carlo simulation for target return probabilities
+- Customizable holding periods and confidence intervals
 
-bash
-pip install -r requirements.txt
-or, if you prefer to install manually:
+### 📊 Scenario Analysis
+- Pre-defined market scenarios:
+  - Bull Market
+  - Bear Market
+  - High Volatility
+  - Low Volatility
+  - Market Crash
+- Visual comparison of expected returns across scenarios
 
-bash
+## 🛠️ Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- pip package manager
+
+### Required Libraries
+```bash
 pip install streamlit numpy pandas plotly scipy matplotlib
-These packages cover Streamlit for the UI, NumPy/Pandas for data handling, SciPy for the normal distribution, and Plotly/Matplotlib for visualization. [page:1]
+```
 
-Usage
-Run the dashboard with:
+Or install from requirements file:
+```bash
+pip install -r requirements.txt
+```
 
-streamlit run heatmap.py
-Then open the local URL printed in the terminal (usually http://localhost:8501) in your browser. [page:1]
+### requirements.txt
+```
+streamlit>=1.28.0
+numpy>=1.24.0
+pandas>=2.0.0
+plotly>=5.17.0
+scipy>=1.11.0
+matplotlib>=3.7.0
+```
 
-How It Works: 
-Uses the Black–Scholes formula with safeguards for edge cases (for example, when time to expiry is near zero) to compute option prices. [page:1]
+## 🚀 Usage
 
-Computes Greeks analytically and exposes them as both scalar metrics and heatmaps over a grid of stock prices and times. [page:1]
+### Running the Dashboard
+1. Navigate to the project directory
+2. Run the Streamlit app:
+```bash
+streamlit run app.py
+```
+3. The dashboard will open in your default web browser at `http://localhost:8501`
 
-Simulates stock prices via geometric Brownian motion to estimate probabilities of hitting a target return over a specified horizon. [page:1]
+### Basic Configuration
 
-Provides predefined market scenarios by shocking spot price and volatility, then recomputing option value, P/L, and return. [page:1]
+#### Option Parameters (Sidebar)
+- **Option Type**: Select Call or Put
+- **Current Stock Price**: The current price of the underlying asset
+- **Strike Price**: The option's strike price
+- **Risk-Free Rate**: Annual risk-free interest rate (%)
+- **Volatility**: Annual implied volatility (%)
+- **Premium Paid**: The premium you paid for the option
 
-Inputs and Controls
-The sidebar lets you configure: [page:1]
+#### Analysis Ranges
+- **Stock Price Range**: Define the range of stock prices to analyze (% from current)
+- **Time to Expiry**: Set the range of time periods to analyze (in days)
 
-Option type: call or put
+## 📚 Understanding the Dashboard
 
-Current stock price and strike
+### P/L Heatmap Tab
+The heatmap visualizes your option's profit/loss across different scenarios:
+- **X-axis**: Stock prices
+- **Y-axis**: Days until expiration
+- **Color**: Return percentage (green = profit, red = loss)
+- **Black markers**: Break-even points
 
-Risk-free rate and implied volatility (annualized)
+**Point Analysis Panel** allows you to examine specific scenarios with exact P/L calculations.
 
-Premium paid for the option
+### Greeks Analysis Tab
+Monitor how your option's value changes with market conditions:
+- View all Greeks at a glance
+- Select individual Greeks for detailed heatmap analysis
+- Understand risk exposure and hedging opportunities
 
-Stock price range
+### Risk Metrics Tab
+Quantify your risk exposure:
+- **VaR Calculation**: Understand maximum potential loss at your chosen confidence level
+- **Probability Analysis**: See the likelihood of achieving your target return
 
-time-to-expiry range (days)
+### Scenario Analysis Tab
+Test your position against predefined market conditions:
+- Compare returns across different market scenarios
+- Understand best and worst-case outcomes
+- Visual bar chart for easy comparison
 
-Tabs provide: [page:1]
+## 🧮 Mathematical Background
 
-P/L Heatmap: percent return grid with break-even markers
+### Black-Scholes Formula
+The dashboard uses the Black-Scholes model for European options pricing:
 
-Greeks Analysis: metrics and per-Greek heatmaps
+**Call Option:**
+```
+C = S₀N(d₁) - Ke^(-rT)N(d₂)
+```
 
-Risk Metrics: VaR and Monte Carlo probability metrics
+**Put Option:**
+```
+P = Ke^(-rT)N(-d₂) - S₀N(-d₁)
+```
 
-Scenario Analysis: table and bar chart of scenario returns
+Where:
+- `d₁ = [ln(S₀/K) + (r + σ²/2)T] / (σ√T)`
+- `d₂ = d₁ - σ√T`
 
-Disclaimers:
-This project is for educational and research purposes only and does not constitute financial, investment, trading, or legal advice.
+### Greeks Calculations
+- **Delta**: ∂V/∂S (first derivative with respect to stock price)
+- **Gamma**: ∂²V/∂S² (second derivative with respect to stock price)
+- **Theta**: -∂V/∂t (time decay)
+- **Vega**: ∂V/∂σ (volatility sensitivity)
+- **Rho**: ∂V/∂r (interest rate sensitivity)
 
-The Black–Scholes model and all simulations here rely on simplifying assumptions that may not hold in real markets; outputs can be materially inaccurate or incomplete.
+## ⚠️ Important Notes
 
-Past or simulated performance is not indicative of future results. Use any outputs at your own risk.
+### Assumptions
+- European-style options (can only be exercised at expiration)
+- No dividends on the underlying stock
+- Constant volatility and interest rates
+- Efficient markets with no transaction costs
+- Log-normal distribution of stock prices
 
-Always consult a qualified financial professional before making trading or investment decisions.
+### Limitations
+- Real market conditions may differ from Black-Scholes assumptions
+- Does not account for American-style early exercise
+- Dividends are not considered
+- Transaction costs and slippage are excluded
+- Implied volatility may not remain constant
+
+## 🎯 Use Cases
+
+1. **Options Strategy Evaluation**: Compare potential outcomes before entering a trade
+2. **Risk Assessment**: Understand maximum loss and probability of profit
+3. **Portfolio Hedging**: Use Greeks to balance portfolio risk
+4. **Educational Tool**: Learn how options pricing works in different scenarios
+5. **Backtesting**: Analyze historical "what-if" scenarios
+
+## 🤝 Contributing
+
+Contributions are welcome! Some areas for enhancement:
+- Add support for American options
+- Implement dividend adjustments
+- Add multi-leg strategy analysis (spreads, straddles, etc.)
+- Include real-time data integration
+- Add options chains visualization
+
+## 📄 License
+
+This project is provided as-is for educational and analytical purposes.
+
+## 🆘 Support
+
+For issues or questions:
+- Review the parameter descriptions in the sidebar
+- Hover over metrics for additional information
+- Adjust ranges if heatmaps appear empty or unclear
+
+## 🔮 Future Enhancements
+
+- [ ] Multi-leg options strategies
+- [ ] Real-time market data integration
+- [ ] Historical volatility analysis
+- [ ] Options chain visualization
+- [ ] Portfolio-level analysis
+- [ ] Export functionality for reports
+- [ ] Custom scenario builder
+- [ ] Dividend adjustment support
+
+---
+
+**Disclaimer**: This tool is for educational and analytical purposes only. It should not be considered financial advice. Always consult with a qualified financial advisor before making investment decisions.
