@@ -158,7 +158,7 @@ with st.sidebar:
     t_max = time_range[1] / 365
 
 # Main content area
-tab1, tab2, tab3, tab4 = st.tabs(["📈 P/L Heatmap", "🔍 Greeks Analysis", "💰 Risk Metrics", "📊 Scenario Analysis"])
+tab1, tab2, tab3, tab4 = st.tabs(["P/L Heatmap", "Greeks Analysis", "Risk Metrics", "Scenario Analysis"])
 
 with tab1:
     col1, col2 = st.columns([3, 1])
@@ -228,7 +228,7 @@ with tab1:
         st.plotly_chart(fig, use_container_width=True)
     
     with col2:
-        st.subheader("📍 Point Analysis")
+        st.subheader("Point Analysis")
         
         # Point selection
         selected_stock = st.number_input(
@@ -277,7 +277,7 @@ with tab1:
         """, unsafe_allow_html=True)
 
 with tab2:
-    st.subheader("🔍 Greeks Analysis Dashboard")
+    st.subheader("Greeks Analysis Dashboard")
     
     # Greeks calculation for current parameters
     greeks = calculate_greeks(S0, K, 30/365, r, sigma, option_type.lower())
@@ -448,6 +448,6 @@ with tab4:
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #666;">
-    <p>Built with ❤️ using Streamlit & Plotly | Advanced Black-Scholes Options Analysis Dashboard</p>
+    <p>Black-Scholes Options Analysis Dashboard</p>
 </div>
 """, unsafe_allow_html=True)
