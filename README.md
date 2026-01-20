@@ -1,16 +1,16 @@
-# 🚀 Advanced Black-Scholes Options P/L Dashboard
+# Advanced Black-Scholes Options P/L Dashboard
 
 An interactive web application for analyzing options trading strategies using the Black-Scholes model. This dashboard provides comprehensive profit/loss analysis, Greeks calculations, risk metrics, and scenario testing for call and put options.
 
-## ✨ Features
+## Features
 
-### 📈 P/L Heatmap
+### P/L Heatmap
 - Interactive 2D heatmap showing profit/loss across different stock prices and time periods
 - Break-even point visualization
 - Percentage return calculations
 - Real-time point analysis with customizable parameters
 
-### 🔍 Greeks Analysis
+### Greeks Analysis
 - Real-time calculation of all major Greeks:
   - **Delta (Δ)**: Price sensitivity to underlying stock movement
   - **Gamma (Γ)**: Rate of change of Delta
@@ -19,12 +19,12 @@ An interactive web application for analyzing options trading strategies using th
   - **Rho (ρ)**: Sensitivity to interest rate changes
 - Interactive heatmaps for each Greek across different market conditions
 
-### 💰 Risk Metrics
+### Risk Metrics
 - **Value at Risk (VaR)**: Calculate potential losses at various confidence levels
 - **Probability Analysis**: Monte Carlo simulation for target return probabilities
 - Customizable holding periods and confidence intervals
 
-### 📊 Scenario Analysis
+### Scenario Analysis
 - Pre-defined market scenarios:
   - Bull Market
   - Bear Market
@@ -33,7 +33,7 @@ An interactive web application for analyzing options trading strategies using th
   - Market Crash
 - Visual comparison of expected returns across scenarios
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -59,7 +59,7 @@ scipy>=1.11.0
 matplotlib>=3.7.0
 ```
 
-## 🚀 Usage
+## Usage
 
 ### Running the Dashboard
 1. Navigate to the project directory
@@ -83,7 +83,7 @@ streamlit run app.py
 - **Stock Price Range**: Define the range of stock prices to analyze (% from current)
 - **Time to Expiry**: Set the range of time periods to analyze (in days)
 
-## 📚 Understanding the Dashboard
+## Understanding the Dashboard
 
 ### P/L Heatmap Tab
 The heatmap visualizes your option's profit/loss across different scenarios:
@@ -111,7 +111,7 @@ Test your position against predefined market conditions:
 - Understand best and worst-case outcomes
 - Visual bar chart for easy comparison
 
-## 🧮 Mathematical Background
+## Mathematical Background
 
 ### Black-Scholes Formula
 The dashboard uses the Black-Scholes model for European options pricing:
@@ -137,7 +137,7 @@ Where:
 - **Vega**: ∂V/∂σ (volatility sensitivity)
 - **Rho**: ∂V/∂r (interest rate sensitivity)
 
-## ⚠️ Important Notes
+## Important Notes
 
 ### Assumptions
 - European-style options (can only be exercised at expiration)
@@ -153,7 +153,7 @@ Where:
 - Transaction costs and slippage are excluded
 - Implied volatility may not remain constant
 
-## 🎯 Use Cases
+## Use Cases
 
 1. **Options Strategy Evaluation**: Compare potential outcomes before entering a trade
 2. **Risk Assessment**: Understand maximum loss and probability of profit
@@ -161,7 +161,7 @@ Where:
 4. **Educational Tool**: Learn how options pricing works in different scenarios
 5. **Backtesting**: Analyze historical "what-if" scenarios
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Some areas for enhancement:
 - Add support for American options
@@ -170,18 +170,18 @@ Contributions are welcome! Some areas for enhancement:
 - Include real-time data integration
 - Add options chains visualization
 
-## 📄 License
+## License
 
-This project is provided as-is for educational and analytical purposes.
+This project is for educational and analytical purposes.
 
-## 🆘 Support
+## Support
 
 For issues or questions:
 - Review the parameter descriptions in the sidebar
 - Hover over metrics for additional information
 - Adjust ranges if heatmaps appear empty or unclear
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - [ ] Multi-leg options strategies
 - [ ] Real-time market data integration
